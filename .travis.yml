@@ -6,6 +6,9 @@ os:
 sudo: required
 before_script:
 - echo -e "Host $REMOTE_HOST\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  addons:
+    ssh_known_hosts:
+      - $REMOTE_HOST
 before_install:
 - openssl aes-256-cbc -K $encrypted_dd63175e05d9_key -iv $encrypted_dd63175e05d9_iv
   -in deploy_rsa.enc -out deploy_rsa -d
@@ -14,6 +17,3 @@ before_install:
 - ssh-add deploy_rsa
 - chmod +x deploy.sh
 - sh deploy.sh
-  addons:
-    ssh_known_hosts:
-      - $REMOTE_HOST
