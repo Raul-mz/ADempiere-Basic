@@ -16,4 +16,4 @@ before_install:
 - sh deploy.sh
 addons:
   ssh_known_hosts:
-  - "$REMOTE_HOST"
+  - 159.89.51.211
